@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000;
+}
+#hamburger-toogle{
+    display: none;
+}
+.hamburger-wrapper{
+    position: absolute;
+    right: 50px;
+    top: 25px;
+    z-index: 1;
+}
+.hamburger, .hamburger::before, .hamburger::after{
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: #565656;
+    transition: all .3s;
+}
+.hamburger{
+    position: relative;
+}
+.hamburger::before, .hamburger::after{
+    content: " ";
+    position: absolute;
+}
+.hamburger::before{
+    transform: translateY(-10px);
+}
+.hamburger::after{
+    transform: translateY(10px);
+}
+.navbar{
+    position: absolute;
+    right: 0;
+    width: 500px;
+    height: 100vh;
+    background-image: linear-gradient(120deg, #e52d27, #b31217);
+    clip-path: circle(0 at 100% 0);
+}
+.navbar-list{
+    position: absolute;
+    list-style: none;
+    right: 180px;
+    top: 40px;
+    transform: translateX(-300px) rotate(20deg);
+    opacity: 0;
+    transition: all .3s;
+    transition-delay: .3s;
+}
+.navbar-list li{
+    margin: 50px 0;
+    text-align: center;
+}
+.navbar-list li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: "Century Gothic", sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    transition: all .3s;
+}
+.navbar-list li a:hover{
+    border-bottom: 1px solid #fff;
+}
+#hamburger-toogle:checked ~ .hamburger-wrapper .hamburger{
+    background-color: transparent;
+}
+#hamburger-toogle:checked ~ .hamburger-wrapper .hamburger::before{
+    transform: rotate(225deg);
+    background-color: #fff;
+}
+#hamburger-toogle:checked ~ .hamburger-wrapper .hamburger::after{
+    transform: rotate(-225deg);
+    background-color: #fff;
+}
+#hamburger-toogle:checked ~ .navbar{
+    clip-path: circle(500px at 100% 0);
+}
+#hamburger-toogle:checked ~ .navbar .navbar-list{
+    transform: translateX(0);
+    opacity: 1;
+}
